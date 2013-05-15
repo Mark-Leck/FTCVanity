@@ -9,3 +9,8 @@ https://docs.google.com/file/d/0B5rwxlWy7MtLd3NuNGVPM2czQ0U/edit?usp=sharing
 
 Project Info & Support:
 http://forum.feathercoin.com/index.php?topic=489.0
+
+
+FTC: 6uKmarkQQeMJzD8uLyWn6sXiW4hj4ubjNN
+
+
