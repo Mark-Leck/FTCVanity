@@ -1,1 +1,1 @@
-CreateObject("WScript.Shell").Run "\FTCVanity\ftcvanity.hta"
+CreateObject("WScript.Shell").Run "ftcvanity.hta"
