@@ -2,9 +2,9 @@
 
 <head>
 
-<title>FTCVanity v1.01</title>
+<title>FTCVanity v1.02</title>
 
-<HTA:APPLICATION ID="vbsMenu" APPLICATIONNAME="FTCVanity" BORDER = "thin" SCROLL = "no" MAXIMIZEBUTTON="no" >
+<HTA:APPLICATION ICON="ftcvanity.ico" ID="vbsMenu" APPLICATIONNAME="FTCVanity" BORDER="thin" SCROLL="no" MAXIMIZEBUTTON="no" >
 
 <SCRIPT Language="VBScript">
     Sub Window_Onload
@@ -21,9 +21,9 @@
         window.moveTo intLeft, intTop
     End Sub
 
-  Sub  StartFTCVanity 
+	Sub  StartFTCVanity 
 	Set objShell = CreateObject("Wscript.Shell")
-    objShell.Run "\FTCVanity\ftcvanity.vbs"
+    objShell.Run "ftcvanity.vbs"
         
     End Sub
 	
@@ -33,9 +33,30 @@
 
     Sub  StartFTCVanity64 
 	Set objShell = CreateObject("Wscript.Shell")
-    objShell.Run "\FTCVanity\ftcvanity64.vbs"
+    objShell.Run "ftcvanity64.vbs"
         
     End Sub
+	
+	Sub  ViewKeys 
+	Set objShell = CreateObject("Wscript.Shell")
+    objShell.Run "viewkeys.vbs"
+        
+    End Sub
+	
+	Sub  README 
+	Set objShell = CreateObject("Wscript.Shell")
+    objShell.Run "readme.vbs"
+        
+    End Sub
+
+	Sub DeleteKeys
+	
+	Set objShell = CreateObject("Wscript.Shell")
+    objShell.Run "deletekey.vbs"
+
+    End Sub
+	
+	
 
 </script> 
 
@@ -50,15 +71,19 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 <button onclick="StartFTCVanity">FTCVanity</button> 
 <br>
 <br>
 <button onclick="StartFTCVanity64">FTCVanity64</button> 
 <br>
 <br>
+<button onclick="ViewKeys">View Vanity Addreses & Keys</button> 
+<br>
+<br>
+<button onclick="DeleteKeys">Delete Stored Keys</button> 
+<br>
+<br>
+<button onclick="README">README</button> 
 <br>
 <br>
 <br>
