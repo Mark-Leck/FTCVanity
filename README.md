@@ -4,8 +4,8 @@ FTCVanity
 Basic GUI front-end for vanitygen.exe for the creation of a Feathercoin wallet address.
 
 Windows Installer package (Includes FTCVanity GUI & vanitygen.exe by samr7 - https://github.com/samr7/vanitygen )
-FTCVanity_v1.01.exe:
-https://docs.google.com/file/d/0B5rwxlWy7MtLcG82SEdKSGRic3c/edit?usp=sharing
+FTCVanity_v1.02.exe:
+https://docs.google.com/file/d/0B5rwxlWy7MtLVXRuU29WdW9DSEE/edit?usp=sharing
 
 
 Project Info & Support:
