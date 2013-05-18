@@ -1,4 +1,10 @@
 Set objShell = CreateObject("Wscript.Shell")
+Return=msgbox("Do you wish to start vanitygen in hidden mode? (default = yes)" , vbInformation+vbYesNo , "FTCVanity64")
+If Return=vbNO Then
+verbose = 1
+else
+verbose = 0
+End If
 strInput = InputBox( "Please enter the vanity pattern you would like to use."  & VBNewline & VBNewline & _
 "For faster address & key generation use no more than 5 or 6 characters, more characters can be used, but it may take a thousand years+ to generate :-)" & VBNewline & VBNewline & _
 "Make sure you start your pattern with a number 6! EG:6test" , "FTCVanity64" )
@@ -11,7 +17,7 @@ Else
 		"  To import the generated keys into the Feathercoin client please refer to the README" & VBNewline & VBNewline & CHR (149) & _
 		"If you have any questions or feedback please visit the Project page over @ the Feathercoin forum:  " & VBNewline & VBNewline & "http://forum.feathercoin.com/index.php?topic=489.0",64, "FTCVanity64")
 Set objShell = CreateObject("Wscript.Shell")
-Return = objShell.Run("%comspec% /k vanitygen64.exe" & " -X 14" & " -o tmp.txt" & " -i " & strInput  , 0 , false )
+Return = objShell.Run("%comspec% /k vanitygen64.exe" & " -X 14" & " -o tmp.txt" & " -i " & strInput  , verbose , false )
 
 WScript.sleep 50 'Alter this number (milliseconds) for suspected false positives for input pattern error message
 
@@ -46,6 +52,13 @@ For Each objProcess In objQResult
 intReturn = objProcess.Terminate(1)
 
 Next
+'Added incase of a false positive and script actually ran and created tmp.txt
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+
+If objFSO.FileExists("tmp.txt") Then
+objFSO.DeleteFile "tmp.txt"
+Msgbox "ERROR!! FALSE POSITIVE DETECTED!!" & VBNewline & VBNewline & CHR (149) & "  Please report this error message over on the project page @:" & VBNewline & VBNewline & CHR (149) & "  http://forum.feathercoin.com/index.php?topic=489.0" , 16 , "FTCVanity64"
+End If
 	Wscript.Quit()
 end if
 
@@ -167,11 +180,6 @@ objFSO.DeleteFile "tmp.txt"
 End If
 
 End If
-
-
-
-
-
 
 
 
