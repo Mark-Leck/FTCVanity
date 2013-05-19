@@ -1,5 +1,5 @@
 Set objShell = CreateObject("Wscript.Shell")
-Return=msgbox("Do you wish to start vanitygen in hidden mode? (default = yes)" , vbInformation+vbYesNo , "FTCVanity")
+Return=msgbox("Do you wish to start vanitygen in hidden mode? (default = yes)" , vbQuestion+vbYesNo , "FTCVanity")
 If Return=vbNO Then
 verbose = 1
 else
