@@ -1,7 +1,7 @@
 FTCVanity
 =========
 
-Basic GUI front-end for vanitygen.exe for the creation of a Feathercoin wallet address.
+Basic GUI front-end for vanitygen.exe, vanitygen64.exe and oclvanitygen.exe for the creation of a Feathercoin vanity wallet address.
 
 Windows Installer package (Includes FTCVanity GUI & vanitygen.exe by samr7 - https://github.com/samr7/vanitygen )
 FTCVanity_v1.04.exe:
