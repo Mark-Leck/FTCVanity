@@ -2,7 +2,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 	If objFSO.FileExists("README.txt") Then
 Set objTextFile = objFSO.OpenTextFile("README.txt")
 strLine = objTextFile.ReadAll
-	Window=Msgbox(strLine ,64, "FTCVanity v1.03 README")
+	Window=Msgbox(strLine ,64, "FTCVanity v1.04 README")
 Else
-	Window=Msgbox("Wot No README?" ,64, "FTCVanity v1.03")
+	Window=Msgbox("Wot No README?" ,64, "FTCVanity v1.04")
 End If
