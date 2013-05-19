@@ -1,5 +1,5 @@
 Set objShell = CreateObject("Wscript.Shell")
-Return=msgbox("Do you wish to start vanitygen in hidden mode? (default = yes)" , vbInformation+vbYesNo , "FTCVanity64")
+Return=msgbox("Do you wish to start vanitygen64 in hidden mode? (default = yes)" , vbQuestion+vbYesNo , "FTCVanity64")
 If Return=vbNO Then
 verbose = 1
 else
@@ -142,7 +142,7 @@ For Each objProcess In objQResult
 intReturn = objProcess.Terminate(1)
 
 Next
-	MsgBox"Vanity Generator Terminated!" , 16 , "FTCVanity"
+	MsgBox"Vanity Generator Terminated!" , 16 , "FTCVanity64"
 	Wscript.Quit()
 End Function
 
