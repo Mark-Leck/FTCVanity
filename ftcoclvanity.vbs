@@ -1,35 +1,70 @@
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+' First run setup one-time only script:
+If objFSO.FileExists("syssettings.conf") Then
+FileExists=True
+Else
 Set objShell = CreateObject("Wscript.Shell")
-Return=msgbox("Do you wish to start oclvanitygen in hidden mode? (default = yes)" , vbQuestion+vbYesNo , "FTCoclVanity")
-If Return=vbNO Then
-verbose = 1
-else
-verbose = 0
+    objShell.Run "settings.vbs"
+	WScript.Quit()
+	End If
+
+
+Dim objFileSystem, objInputFile
+Set objFileSystem = CreateObject("Scripting.fileSystemObject")
+Set objInputFile = objFileSystem.OpenTextFile("syssettings.conf", 1)
+delay = objInputFile.ReadLine
+objInputFile.Close
+
+Dim objFileSystem2, objInputFile2
+Set objFileSystem2 = CreateObject("Scripting.fileSystemObject")
+Set objInputFile2 = objFileSystem2.OpenTextFile("version.conf", 1)
+version = objInputFile2.ReadLine
+objInputFile2.Close
+
+If version=14 Then
+name="Feathercoin"
+example="6test" 
+id="6"
+Else
+If version=48 Then
+name="Litecoin"
+example="Ltest" 
+id="L"
+Else
+If version=0 Then
+name="Bitcoin"
+example="1test" 
+id="1"
 End If
-strInput = InputBox( "Please enter the vanity pattern you would like to use."  & VBNewline & VBNewline & _
+End If
+End If
+
+Set objShell = CreateObject("Wscript.Shell")
+strInput = InputBox( "Please enter the vanity pattern you would like to use to create your " & name & " address."  & VBNewline & VBNewline & _
 "For faster address & key generation use no more than 5 or 6 characters, more characters can be used, but it may take a thousand years+ to generate :-)" & VBNewline & VBNewline & _
-"Make sure you start your pattern with a number 6! EG:6test" , "FTCoclVanity" )
+"Make sure you start your pattern with:" & id & " EG: " & example , "FTCoclVanity " & name )
 If strInput = "" then
 Wscript.Quit()
 Else
-  	'Pre-start message....
-		Window=Msgbox( chr(149) & "  Your Vanity Feathercoin Address & Private Keys will now be generated." & VBNewline & VBNewline & CHR (149) & _
+		'Pre-start message....
+		Window=Msgbox( chr(149) & "  Your Vanity " & name & " Address & Private Keys will now be generated." & VBNewline & VBNewline & CHR (149) & _
 		"  Please be patient as this can take some time to complete." & VBNewline & VBNewline & CHR (149) & _
-		"  To import the generated keys into the Feathercoin client please refer to the README" & VBNewline & VBNewline & CHR (149) & _
-		"If you have any questions or feedback please visit the Project page over @ the Feathercoin forum:  " & VBNewline & VBNewline & "http://forum.feathercoin.com/index.php?topic=489.0",64, "FTCoclVanity")
+		"  To import the generated keys into the " & name & " QT client please refer to the README" & VBNewline & VBNewline & CHR (149) & _
+		"If you have any questions or feedback please visit the Project page over @ the Feathercoin forum:  " & VBNewline & VBNewline & "http://forum.feathercoin.com/index.php?topic=489.0",64, "FTCoclVanity " & name)
 Set objShell = CreateObject("Wscript.Shell")
-Return = objShell.Run("%comspec% /k oclvanitygen.exe" & " -X 14" & " -o tmp.txt" & " -i " & strInput  , verbose , false )
+Return = objShell.Run("%comspec% /k oclvanitygen.exe" & " -X " & version & " -o tmp.txt" & " -i " & strInput  , 2 , false )
 
-WScript.sleep 50 'Alter this number (milliseconds) for suspected false positives for input pattern error message
 
+
+WScript.sleep delay
 DIM strComputer,strProcess
-
 strComputer = "." 
 strProcess = "oclvanitygen.exe"
 
 if isProcessRunning(strComputer,strProcess) then
 	MsgBox"Vanity Generator Started Successfully!" & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbOKOnly , "FTCoclVanity"
 else
-	MsgBox"ERROR!" & VBNewline & VBNewline & CHR (149) & "  Unable to generate valid Feathercoin address from input pattern!" & VBNewline & CHR (149) & "  Pattern: " & strInput , 16 , "FTCoclVanity"
+	MsgBox"ERROR!" & VBNewline & VBNewline & CHR (149) & "  Unable to generate valid Feathercoin address from input pattern!" & VBNewline & CHR (149) & "  Pattern: " & strInput , 16 , "FTCoclVanity " & name
 		Set oShell = CreateObject("WScript.Shell")
 Set oWmg = GetObject("winmgmts:")
 
@@ -57,12 +92,14 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 
 If objFSO.FileExists("tmp.txt") Then
 objFSO.DeleteFile "tmp.txt"
-Msgbox "ERROR!! FALSE POSITIVE DETECTED!!" & VBNewline & VBNewline & CHR (149) & "  Please report this error message over on the project page @:" & VBNewline & VBNewline & CHR (149) & "  http://forum.feathercoin.com/index.php?topic=489.0" , 16 , "FTCoclVanity"
+Msgbox "ERROR!! FALSE POSITIVE DETECTED!!" & VBNewline & VBNewline & CHR (149) & "  Please report this error message over on the project page @:" & VBNewline & VBNewline & CHR (149) & "  http://forum.feathercoin.com/index.php?topic=489.0" , 16 , "FTCoclVanity " & name
 End If
 	Wscript.Quit()
 end if
 
+
 ' Function to check if a process is running
+
 function isProcessRunning(byval strComputer,byval strProcessName)
 
 	Dim objWMIService, strWMIQuery
@@ -112,7 +149,7 @@ Function waitTilExists (ByVal file, withRepeat)
 				End If
         Loop
         If withRepeat Then
-            rep = MsgBox ("Still Generating, Please wait..." & VBNewline & VBNewline & "Choose OK to REFRESH or Choose CANCEL to QUIT..." , vbOkCancel , "FTCoclVanity")
+            rep = MsgBox ("Still Generating, Please wait..." & VBNewline & VBNewline & "Choose OK to REFRESH or Choose CANCEL to QUIT..." , vbOkCancel , "FTCoclVanity " & name)
             doAgain = (rep = vbOk)
         Else
 			
@@ -142,11 +179,11 @@ For Each objProcess In objQResult
 intReturn = objProcess.Terminate(1)
 
 Next
-	MsgBox"Vanity Generator Terminated!" , 16 , "FTCoclVanity"
+	MsgBox"Vanity Generator Terminated!" , 16 , "FTCoclVanity " & name
 	Wscript.Quit()
 End Function
 
-Window=MsgBox("All Done!" & VBNewline & VBNewline & "Choose OK to Continue..." ,64, "FTCoclVanity")
+Window=MsgBox("All Done!" & VBNewline & VBNewline & "Choose OK to Continue..." ,64, "FTCoclVanity " & name)
 
 	Set oShell = CreateObject("WScript.Shell")
 Set oWmg = GetObject("winmgmts:")
@@ -164,7 +201,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 Set objTextFile = objFSO.OpenTextFile("tmp.txt")
 
 strLine = objTextFile.ReadAll
-Window=Msgbox( "Your New Vanity Address & Private Key:" & VBNewline & VBNewline & strLine ,64, "FTCoclVanity")
+Window=Msgbox( "Your New " & name & " Vanity Address & Private Key:" & VBNewline & VBNewline & strLine ,64, "FTCoclVanity " & name)
 objTextFile.Close
 
 Set objFSO = CreateObject("Scripting.FileSystemObject")
