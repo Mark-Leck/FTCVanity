@@ -2,7 +2,7 @@
  
 <head> 
 
-<title>FTCVanity v1.04</title>
+<title>FTCVanity v1.07</title>
 
 <HTA:APPLICATION ICON="ftcvanity.ico" ID="vbsMenu" APPLICATIONNAME="FTCVanity" BORDER="thin" SCROLL="no" MAXIMIZEBUTTON="no" >
 <script language=vbs> 
@@ -14,8 +14,8 @@ Const sMenuItems = "File,Start,Tools,Help"
 
 Const sFile = "Exit" 
 Const sStart = "FTCVanity,FTCVanity64,FTCoclVanity" 
-Const sTools = "View Keys,Delete Keys" 
-Const sHelp = "Readme, About, Info" 
+Const sTools = "View Keys,Delete Keys,Settings" 
+Const sHelp = "Readme,About,Info" 
 Const sHTML = "&nbsp;&nbsp;&nbsp;#sItem#&nbsp;&nbsp;&nbsp;" 
 
  
@@ -43,6 +43,7 @@ Dim entry
         intLeft = (intHorizontal - 400) / 2
         intTop = (intVertical - 400) / 2
         window.resizeTo 400,400
+		On Error Resume Next 'some OS have problems with this recentering script, the GUI screen may not be centered on all systems, but no type mismatch errors will be thrown.
         window.moveTo intLeft, intTop
 end sub 
  
@@ -189,6 +190,13 @@ end sub
     objShell.Run "readme.vbs"
         
     End Sub
+	Sub  Version
+	Set objShell = CreateObject("Wscript.Shell")
+    objShell.Run "settings.hta"
+        
+    End Sub
+
+	
 
 	Sub DeleteKeys
 	
@@ -214,16 +222,18 @@ Sub SubMenuClick
       ViewKeys()
     case "delete keys" 
       DeleteKeys()
+	  case "settings"
+	  Version()
     case "readme" 
       README()
     case "about" 
-      msgbox "FTCVanity v1.04" & vbCRLF & "          By" & vbCRLF & "     UKMark"_ 
-              & vbCRLF & "      © 2013" & vbCRLF & "https://github.com/Mark-Leck/FTCVanity" ,_ 
-              vbOKOnly + vbInformation, "FTCVanity v1.04" 
+      msgbox "FTCVanity v1.07" & vbCRLF & "          By" & vbCRLF & "     UKMark"_ 
+              & vbCRLF & "      © 2013" & vbCRLF & "https://github.com/Mark-Leck/FTCVanity" & vbCRLF &  vbCRLF & "FTC: 6uKmarkQQeMJzD8uLyWn6sXiW4hj4ubjNN"  ,_ 
+              vbOKOnly + vbInformation, "FTCVanity v1.07" 
 	case "info"
-	  msgbox CHR (149) & "  FTCVanity is for 32 bit (CPU) Feathercoin Vanity Address & Private Key Generation."  & VBNewline & VBNewline & CHR (149) & _
-	  "  FTCVanity64 is for 64 bit (CPU) Feathercoin Vanity Address & Private Key Generation." _
-	  & VBNewline & VBNewline & CHR (149) &"  FTCoclVanity is for OpenCL-compatible (GPU) Feathercoin Vanity Address & Private Key Generation." & VBNewline & VBNewline & CHR (149) & "  vanitygen.exe, vanitygen64.exe & oclvanitygen.exe are the work of samr7 - https://github.com/samr7/vanitygen" , vbInformation , "FTCVanity v1.04"
+	  msgbox CHR (149) & "  FTCVanity is for 32 bit (CPU) Vanity Address & Private Key Generation."  & VBNewline & VBNewline & CHR (149) & _
+	  "  FTCVanity64 is for 64 bit (CPU) Vanity Address & Private Key Generation." _
+	  & VBNewline & VBNewline & CHR (149) &"  FTCoclVanity is for OpenCL-compatible (GPU) Vanity Address & Private Key Generation." & VBNewline & VBNewline & CHR (149) & "  vanitygen.exe, vanitygen64.exe & oclvanitygen.exe are the work of samr7 - https://github.com/samr7/vanitygen" , vbInformation , "FTCVanity v1.07"
   end Select 
  
 end sub 
