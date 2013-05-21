@@ -1,6 +1,6 @@
 HOW TO IMPORT THE GENERATED PRIVATE KEYS:
 
-To import the generarted private key, simply start the Feathercoin client as usual and then navigate to:
+To import the generarted private key, simply start the QT client as usual and then navigate to:
 
 Help >> Debug Window >> Console
 
