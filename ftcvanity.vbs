@@ -1,17 +1,15 @@
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 ' First run setup one-time only script:
-If objFSO.FileExists("syssettings.conf") Then
+If objFSO.FileExists("ftcvanity.conf") Then
 FileExists=True
 Else
-Set objShell = CreateObject("Wscript.Shell")
-    objShell.Run "settings.vbs"
-	WScript.Quit()
+Benchmark()
 	End If
 
 
 Dim objFileSystem, objInputFile
 Set objFileSystem = CreateObject("Scripting.fileSystemObject")
-Set objInputFile = objFileSystem.OpenTextFile("syssettings.conf", 1)
+Set objInputFile = objFileSystem.OpenTextFile("ftcvanity.conf", 1)
 delay = objInputFile.ReadLine
 objInputFile.Close
 
@@ -96,6 +94,221 @@ Msgbox "ERROR!! FALSE POSITIVE DETECTED!!" & VBNewline & VBNewline & CHR (149) &
 End If
 	Wscript.Quit()
 end if
+' First Run Configuration Benchmark
+Function Benchmark()
+window=Msgbox("First Run Message:" & VBNewline & VBNewline & "Before proceeding FTCVanity needs to configure itself based on system performance, this is a one-time only process." & VBNewline & VBNewline & "A short test will now commence, this can take up to 30 seconds to complete." & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbExclamation, "FTCVanity_v1.08 Configuration")
+Set objShell = CreateObject("Wscript.Shell")
+Return = objShell.Run("%comspec% /k vanitygen.exe" & " -i " & "1test", 0 , false )
+
+DIM strComputer,strProcess, x
+
+x = 1
+strComputer = "." 
+strProcess = "vanitygen.exe"
+Do Until x > 400
+delay1 = x
+x = x + 1
+WScript.Sleep 1
+If isProcessRunning(strComputer,strProcess) then
+x = 401
+End If
+Loop
+delay1 = (delay1 * 50)
+' Terminate cmd.exe & vanitygen.exe
+Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='vanitygen.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+On Error Resume Next
+intReturn = objProcess.Terminate(1)
+
+Next
+	Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='cmd.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+
+intReturn = objProcess.Terminate(1)
+
+Next
+
+Set objShell = CreateObject("Wscript.Shell")
+Return = objShell.Run("%comspec% /k vanitygen.exe" & " -X 14 -i " & "6test", 0 , false )
+
+x = 1
+strComputer = "." 
+strProcess = "vanitygen.exe"
+Do Until x > 400
+delay2 = x
+x = x + 1
+WScript.Sleep 1
+If isProcessRunning(strComputer,strProcess) then
+x = 401
+End If
+Loop
+delay2 = (delay2 * 50)
+' Terminate cmd.exe & vanitygen.exe
+Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='vanitygen.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+On Error Resume Next
+intReturn = objProcess.Terminate(1)
+
+Next
+	Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='cmd.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+
+intReturn = objProcess.Terminate(1)
+
+Next
+
+Set objShell = CreateObject("Wscript.Shell")
+Return = objShell.Run("%comspec% /k vanitygen.exe" & " -i " & "1test", 0 , false )
+
+x = 1
+strComputer = "." 
+strProcess = "vanitygen.exe"
+Do Until x > 400
+delay3 = x
+x = x + 1
+WScript.Sleep 1
+If isProcessRunning(strComputer,strProcess) then
+x = 401
+End If
+Loop
+delay3 = (delay3 * 50)
+
+' Terminate cmd.exe & vanitygen.exe
+Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='vanitygen.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+On Error Resume Next
+intReturn = objProcess.Terminate(1)
+
+Next
+	Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='cmd.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+
+intReturn = objProcess.Terminate(1)
+
+Next
+
+Set objShell = CreateObject("Wscript.Shell")
+Return = objShell.Run("%comspec% /k vanitygen.exe" & " -X 48 -i " & "Ltest", 0 , false )
+
+x = 1
+strComputer = "." 
+strProcess = "vanitygen.exe"
+Do Until x > 400
+delay4 = x
+x = x + 1
+WScript.Sleep 1
+If isProcessRunning(strComputer,strProcess) then
+x = 401
+End If
+Loop
+delay4 = (delay4 * 50)
+' Terminate cmd.exe & vanitygen.exe
+Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='vanitygen.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+On Error Resume Next
+intReturn = objProcess.Terminate(1)
+
+Next
+	Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='cmd.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+
+intReturn = objProcess.Terminate(1)
+
+Next
+
+Set objShell = CreateObject("Wscript.Shell")
+Return = objShell.Run("%comspec% /k vanitygen.exe" & " -i " & "1test", 0 , false )
+
+x = 1
+strComputer = "." 
+strProcess = "vanitygen.exe"
+Do Until x > 400
+delay5 = x
+x = x + 1
+WScript.Sleep 1
+If isProcessRunning(strComputer,strProcess) then
+x = 401
+End If
+Loop
+delay5 = (delay5 * 50)
+' Terminate cmd.exe & vanitygen.exe
+Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='vanitygen.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+On Error Resume Next
+intReturn = objProcess.Terminate(1)
+
+Next
+	Set oShell = CreateObject("WScript.Shell")
+Set oWmg = GetObject("winmgmts:")
+
+strWndprs = "select * from Win32_Process where name='cmd.exe'"
+Set objQResult = oWmg.Execquery(strWndprs)
+
+For Each objProcess In objQResult
+
+intReturn = objProcess.Terminate(1)
+
+Next
+
+delay = (delay1 + delay2 + delay3 + delay4 + delay5 ) / 5
+'This msgbox is for delay result debugging of the average result over 5 iterations
+'msgbox delay 
+
+' Create ftcvanity.conf and write with delay data
+Set objFSO=CreateObject("Scripting.FileSystemObject")
+
+outFile="ftcvanity.conf"
+Set objFile = objFSO.CreateTextFile(outFile,True)
+objFile.Write delay 
+objFile.Close
+Window=MsgBox("All Done!" & VBNewline & VBNewline & "FTCvanity is now fully configured and ready to use."  & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbInformation, "FTCVanity_v1.08 Configuration")
+
+End Function
 
 
 ' Function to check if a process is running
@@ -119,12 +332,12 @@ function isProcessRunning(byval strComputer,byval strProcessName)
 
 end function
 
-Dim retval, fso, file
+Dim retval, fso, file, strComputer2, strProcess2
 Set fso = CreateObject ("scripting.filesystemobject")
-
+strComputer2 = "." 
+strProcess2 = "cmd.exe"
 file = "tmp.txt"
 retval = waitTilExists (file, true)
-
 Function waitTilExists (ByVal file, withRepeat)
     ' Sleeps until the file exists
     ' The polling interval will increase gradually, but never rises above MAX_WAITTIME
@@ -147,13 +360,18 @@ Function waitTilExists (ByVal file, withRepeat)
                 waitTilExists = true
 				Exit Function
 				End If
-        Loop
+        Loop 
+		if (isProcessRunning(strComputer2,strProcess2)=false) then
+			MsgBox"ERROR!!" & VBNewline & VBNewline & "Vanity Generator Terminated Unexpectedly!", 16 , "FTCVanity " & name
+			wscript.quit()
+		End If
+	
         If withRepeat Then
             rep = MsgBox ("Still Generating, Please wait..." & VBNewline & VBNewline & "Choose OK to REFRESH or Choose CANCEL to QUIT..." , vbOkCancel , "FTCVanity " & name)
             doAgain = (rep = vbOk)
         Else
-			
-        End If
+		
+		End If
     Loop
 	waitTilExists = false
    
