@@ -62,7 +62,7 @@ strProcess = "oclvanitygen.exe"
 if isProcessRunning(strComputer,strProcess) then
 	MsgBox"Vanity Generator Started Successfully!" & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbOKOnly , "FTCoclVanity"
 else
-	MsgBox"ERROR!" & VBNewline & VBNewline & CHR (149) & "  Unable to generate valid Feathercoin address from input pattern!" & VBNewline & CHR (149) & "  Pattern: " & strInput , 16 , "FTCoclVanity " & name
+	MsgBox"ERROR!" & VBNewline & VBNewline & CHR (149) & "  Unable to generate valid " & name & " address from input pattern!" & VBNewline & CHR (149) & "  Pattern: " & strInput , 16 , "FTCoclVanity " & name
 		Set oShell = CreateObject("WScript.Shell")
 Set oWmg = GetObject("winmgmts:")
 
@@ -96,7 +96,7 @@ End If
 end if
 ' First Run Benchmarking Configuration
 Function Benchmark()
-window=Msgbox("First Run Message:" & VBNewline & VBNewline & "Before proceeding FTCVanity needs to configure itself based on system performance, this is a one-time only process." & VBNewline & VBNewline & "A short test will now commence, this can take up to 30 seconds to complete." & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbExclamation, "FTCVanity_v1.08 Configuration")
+window=Msgbox("First Run Message:" & VBNewline & VBNewline & "Before proceeding FTCVanity needs to configure itself based on system performance, this is a one-time only process." & VBNewline & VBNewline & "A short test will now commence, this can take up to 30 seconds to complete." & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbExclamation, "FTCVanity_v1.10 Configuration")
 Set objShell = CreateObject("Wscript.Shell")
 Return = objShell.Run("%comspec% /k vanitygen.exe" & " -i " & "1test", 0 , false )
 
@@ -306,7 +306,7 @@ outFile="ftcvanity.conf"
 Set objFile = objFSO.CreateTextFile(outFile,True)
 objFile.Write delay 
 objFile.Close
-Window=MsgBox("All Done!" & VBNewline & VBNewline & "FTCvanity is now fully configured and ready to use."  & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbInformation, "FTCVanity_v1.08 Configuration")
+Window=MsgBox("All Done!" & VBNewline & VBNewline & "FTCvanity is now fully configured and ready to use."  & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbInformation, "FTCVanity_v1.10 Configuration")
 
 End Function
 
