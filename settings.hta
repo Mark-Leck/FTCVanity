@@ -2,7 +2,7 @@
  
 <head> 
 
-<title>FTCVanity v1.09 Settings</title>
+<title>FTCVanity v1.10 Settings</title>
 
 <HTA:APPLICATION ICON="ftcvanity.ico" ID="vbsMenu" APPLICATIONNAME="FTCVanity" BORDER="thin" SCROLL="no" MAXIMIZEBUTTON="no" >
 <script language=vbs> 
@@ -43,7 +43,7 @@ end sub
 			Set objFile = objFSO.CreateTextFile(outFile,True)
 			objFile.Write objButton.value 
 			objFile.Close
-                Msgbox "All Done!!" & VBNewline & VBNewline & "FTCVanity is now configured to generate Vanity Adresses & Private Keys for: " & objButton.Id , vbInformation , "FTCVanity v1.09 Settings"
+                Msgbox "All Done!!" & VBNewline & VBNewline & "FTCVanity is now configured to generate Vanity Adresses & Private Keys for: " & objButton.Id , vbInformation , "FTCVanity v1.10 Settings"
 				Self.Close()
             End If
         Next
