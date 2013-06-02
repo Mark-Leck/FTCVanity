@@ -37,6 +37,13 @@ End If
 End If
 End If
 
+strInputD = InputBox( "Please enter your OpenCL device ID number" & VBNewline & "EG: 0" & VBNewline & VBNewline & "Or leave blank for default setting... ", "FTCoclVanity " & name )
+If strInputD = "" then
+strInputd = ""
+else
+strInputd = " -d " & strInputD
+End If
+
 Set objShell = CreateObject("Wscript.Shell")
 strInput = InputBox( "Please enter the vanity pattern you would like to use to create your " & name & " address."  & VBNewline & VBNewline & _
 "For faster address & key generation use no more than 5 or 6 characters, more characters can be used, but it may take a thousand years+ to generate :-)" & VBNewline & VBNewline & _
@@ -44,13 +51,15 @@ strInput = InputBox( "Please enter the vanity pattern you would like to use to c
 If strInput = "" then
 Wscript.Quit()
 Else
+
+
 		'Pre-start message....
 		Window=Msgbox( chr(149) & "  Your Vanity " & name & " Address & Private Keys will now be generated." & VBNewline & VBNewline & CHR (149) & _
 		"  Please be patient as this can take some time to complete." & VBNewline & VBNewline & CHR (149) & _
 		"  To import the generated keys into the " & name & " QT client please refer to the README" & VBNewline & VBNewline & CHR (149) & _
 		"If you have any questions or feedback please visit the Project page over @ the Feathercoin forum:  " & VBNewline & VBNewline & "http://forum.feathercoin.com/index.php?topic=489.0",64, "FTCoclVanity " & name)
 Set objShell = CreateObject("Wscript.Shell")
-Return = objShell.Run("%comspec% /k oclvanitygen.exe" & " -X " & version & " -o tmp.txt" & " -i " & strInput  , 2 , false )
+Return = objShell.Run("%comspec% /k oclvanitygen.exe" & " -X " & version & " -o tmp.txt" & strInputd & " -i " & strInput  , 2 , false )
 
 
 
@@ -96,7 +105,7 @@ End If
 end if
 ' First Run Benchmarking Configuration
 Function Benchmark()
-window=Msgbox("First Run Message:" & VBNewline & VBNewline & "Before proceeding FTCVanity needs to configure itself based on system performance, this is a one-time only process." & VBNewline & VBNewline & "A short test will now commence, this can take up to 30 seconds to complete." & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbExclamation, "FTCVanity_v1.10 Configuration")
+window=Msgbox("First Run Message:" & VBNewline & VBNewline & "Before proceeding FTCVanity needs to configure itself based on system performance, this is a one-time only process." & VBNewline & VBNewline & "A short test will now commence, this can take up to 30 seconds to complete." & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbExclamation, "FTCVanity Configuration")
 Set objShell = CreateObject("Wscript.Shell")
 Return = objShell.Run("%comspec% /k vanitygen.exe" & " -i " & "1test", 0 , false )
 
@@ -306,7 +315,7 @@ outFile="ftcvanity.conf"
 Set objFile = objFSO.CreateTextFile(outFile,True)
 objFile.Write delay 
 objFile.Close
-Window=MsgBox("All Done!" & VBNewline & VBNewline & "FTCvanity is now fully configured and ready to use."  & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbInformation, "FTCVanity_v1.10 Configuration")
+Window=MsgBox("All Done!" & VBNewline & VBNewline & "FTCvanity is now fully configured and ready to use."  & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbInformation, "FTCVanity Configuration")
 
 End Function
 
