@@ -97,7 +97,7 @@ end if
 
 ' First Run Benchmark Configuration
 Function Benchmark()
-window=Msgbox("First Run Message:" & VBNewline & VBNewline & "Before proceeding FTCVanity needs to configure itself based on system performance, this is a one-time only process." & VBNewline & VBNewline & "A short test will now commence, this can take up to 30 seconds to complete." & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbExclamation, "FTCVanity_v1.10 Configuration")
+window=Msgbox("First Run Message:" & VBNewline & VBNewline & "Before proceeding FTCVanity needs to configure itself based on system performance, this is a one-time only process." & VBNewline & VBNewline & "A short test will now commence, this can take up to 30 seconds to complete." & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbExclamation, "FTCVanity Configuration")
 Set objShell = CreateObject("Wscript.Shell")
 Return = objShell.Run("%comspec% /k vanitygen.exe" & " -i " & "1test", 0 , false )
 
@@ -307,7 +307,7 @@ outFile="ftcvanity.conf"
 Set objFile = objFSO.CreateTextFile(outFile,True)
 objFile.Write delay 
 objFile.Close
-Window=MsgBox("All Done!" & VBNewline & VBNewline & "FTCvanity is now fully configured and ready to use."  & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbInformation, "FTCVanity_v1.10 Configuration")
+Window=MsgBox("All Done!" & VBNewline & VBNewline & "FTCvanity is now fully configured and ready to use."  & VBNewline & VBNewline & "Choose OK to CONTINUE..." , vbInformation, "FTCVanity Configuration")
 
 End Function
 
