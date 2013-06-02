@@ -2,12 +2,12 @@
  
 <head> 
 
-<title>FTCVanity v1.10 Settings</title>
+<title>FTCVanity v1.11 Settings</title>
 
 <HTA:APPLICATION ICON="ftcvanity.ico" ID="vbsMenu" APPLICATIONNAME="FTCVanity" BORDER="thin" SCROLL="no" MAXIMIZEBUTTON="no" >
 <script language=vbs> 
 
- 
+vsion="v1.11"
  
 sub Window_onload 
 Dim entry 
@@ -29,9 +29,9 @@ Dim entry
             intVertical = objItem.ScreenHeight
         Next
         intLeft = (intHorizontal - 300) / 2
-        intTop = (intVertical - 200) / 2
-        window.resizeTo 300,200
-  	On Error Resume Next 'some OS have problems with this recentering script, the GUI screen may not be centered on all systems, but no type mismatch errors will be thrown.
+        intTop = (intVertical - 250) / 2
+        window.resizeTo 300,250
+		On Error Resume Next 'some OS have problems with this recentering script, the GUI screen may not be centered on all systems, but no type mismatch errors will be thrown.
         window.moveTo intLeft, intTop
 end sub 
   Sub TestSub
@@ -43,7 +43,7 @@ end sub
 			Set objFile = objFSO.CreateTextFile(outFile,True)
 			objFile.Write objButton.value 
 			objFile.Close
-                Msgbox "All Done!!" & VBNewline & VBNewline & "FTCVanity is now configured to generate Vanity Adresses & Private Keys for: " & objButton.Id , vbInformation , "FTCVanity v1.10 Settings"
+                Msgbox "All Done!!" & VBNewline & VBNewline & "FTCVanity is now configured to generate Vanity Adresses & Private Keys for: " & objButton.Id , vbInformation , "FTCVanity " & vsion & " Settings"
 				Self.Close()
             End If
         Next
