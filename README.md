@@ -12,7 +12,8 @@ http://forum.feathercoin.com/index.php?topic=489.0
 
 FTC: 6uKmarkQQeMJzD8uLyWn6sXiW4hj4ubjNN - Generated using FTCVanity
 
-If building from source you will also require the OpenCL.dll which should be placed in the root of the data folder,
-This can be downloaded from : http://www.dll-files.com/dllindex/dll-files.shtml?opencl
+If building from source apart from needing Vanitygen.exe, vanitygen64.exe and oclvanitygen.exe you will also require the OpenCL.dll which should be placed in the root of the data folder,
+This can be downloaded from : http://www.dll-files.com/dllindex/dll-files.shtml?opencl.
+Note: Some icons & .png's may be missing also.
 
 
